@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class LicenseTest {
 
     @Test
-    public void eqName() {
+    public void eqName()  {
         License first = new License();
         first.setCode("audio");
         License second = new License();
