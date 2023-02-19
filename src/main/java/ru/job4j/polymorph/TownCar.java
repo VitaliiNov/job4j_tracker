@@ -1,6 +1,6 @@
 package ru.job4j.polymorph;
 
-public class TownCar implements Vehicle, Fuel{
+public class TownCar implements Vehicle, Fuel {
     public void changeGear() {
         System.out.println("Коробка передач автомат. Поставить селектор в режим D.");
     }
