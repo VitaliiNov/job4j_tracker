@@ -65,14 +65,6 @@ public class StartUI {
         }
     }
 
-    private int getId(Input input) {
-        System.out.println("=== Edit item ===");
-        System.out.print("Enter id: ");
-        System.out.print("Enter name: ");
-        int id = input.askInt("Enter name: ");
-        return id;
-    }
-
     private void showMenu() {
         String[] menu = {
                 "Add new Item", "Show all items", "Edit item",
