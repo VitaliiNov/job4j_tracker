@@ -1,13 +1,8 @@
 import org.junit.Test;
-import ru.job4j.tracker.Input;
-import ru.job4j.tracker.StubInput;
-import ru.job4j.tracker.UserAction;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.nullValue;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class StartUITest {
     @Test
@@ -18,10 +13,10 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateAction(),
-                new ExitProgram()
+                new Exit()
         };
         new StartUI().init(in, tracker, actions);
-        assertThat(tracker.findAll()[0].getName(), is("Item name"));
+        assertThat(tracker.findAll()[0].getName()).isEqualTo("Item name");
     }
 
     @Test
@@ -33,11 +28,11 @@ public class StartUITest {
                 new String[]{"0", String.valueOf(item.getId()), replacedName, "1"}
         );
         UserAction[] actions = {
-                new EditItem(),
-                new ExitProgram()
+                new ReplaceAction(),
+                new Exit()
         };
         new StartUI().init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
+        assertThat(tracker.findById(item.getId()).getName()).isEqualTo(replacedName);
     }
 
     @Test
@@ -48,10 +43,10 @@ public class StartUITest {
                 new String[]{"0", String.valueOf(item.getId()), "1"}
         );
         UserAction[] actions = {
-                new DeleteItem(),
-                new ExitProgram()
+                new DeleteAction(),
+                new Exit()
         };
         new StartUI().init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()), is(nullValue()));
+        assertThat(tracker.findById(item.getId())).isNull();
     }
 }
