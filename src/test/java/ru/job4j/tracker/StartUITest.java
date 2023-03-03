@@ -16,6 +16,7 @@ public class StartUITest {
         Item expected = new Item("Fix PC");
         assertThat(created.getName()).isEqualTo(expected.getName());
     }
+
     @Test
     public void whenEditItem() {
         Tracker tracker = new Tracker();
@@ -26,6 +27,7 @@ public class StartUITest {
         Item edited = tracker.findById(item.getId());
         assertThat(edited.getName()).isEqualTo("edited item");
     }
+
     @Test
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
