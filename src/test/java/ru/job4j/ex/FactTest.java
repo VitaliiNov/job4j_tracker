@@ -1,15 +1,27 @@
 package ru.job4j.ex;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class FactTest {
-    @Test(expected = IllegalArgumentException.class)
-    public void whenNLessThen0() {
-        int rsl = Fact.calc(-1);
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+class FactTest {
+
+    @Test
+    public void whenException() {
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> {
+                    new Fact().calc(-1);
+                });
+        assertThat(exception.getMessage()).isEqualTo("N could not be less then 0");
     }
 
     @Test
-    public void whenNGreaterThen0() {
-        int rsl = Fact.calc(1);
+    public void when5than() {
+        int start = 5;
+        int expected = 120;
+        int result = new Fact().calc(start);
+        assertThat(result).isEqualTo(expected);
     }
 }
